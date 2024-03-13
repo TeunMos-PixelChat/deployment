@@ -1,3 +1,9 @@
 [submodule "frontend"]
 	path = frontend
 	url = git@github.com:TeunMos-PixelChat/frontend.git
+[submodule "message-api"]
+	path = message-api
+	url = git@github.com:TeunMos-PixelChat/message-api.git
+[submodule "documentation"]
+	path = documentation
+	url = git@github.com:TeunMos-PixelChat/documentation.git
