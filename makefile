@@ -4,11 +4,11 @@ minikube_start:
 minikube_stop:
 	minikube stop
 
-kubectl_apply:
-	kubectl apply -f frontend-deployment.yaml,frontend-service.yaml,message_api-deployment.yaml,message_api-service.yaml,backend-deployment.yaml
+kubectl_apply: kompose
+	kubectl apply -f frontend-deployment.yaml,frontend-service.yaml,message-api-deployment.yaml,message_api-service.yaml
 
 kubectl_delete:
-	kubectl delete -f frontend-deployment.yaml,frontend-service.yaml,message_api-deployment.yaml,message_api-service.yaml,backend-deployment.yaml
+	kubectl delete -f frontend-deployment.yaml,frontend-service.yaml,message-api-deployment.yaml,message_api-service.yaml
 
 dashboard:
 	minikube dashboard
