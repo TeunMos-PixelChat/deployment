@@ -7,3 +7,6 @@
 [submodule "documentation"]
 	path = documentation
 	url = git@github.com:TeunMos-PixelChat/documentation.git
+[submodule "gateway"]
+	path = gateway
+	url = git@github.com:TeunMos-PixelChat/gateway.git
