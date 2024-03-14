@@ -6,8 +6,32 @@ services:
     container_name: pixelchat-frontend
     ports:
       - "3000:3000"
+    networks:
+      - pixelchat-network
   message_api:
     image: pixelchat-message-api
     container_name: pixelchat-message-api
     ports:
       - "3001:3001"
+    networks:
+      - pixelchat-network
+  gateway:
+    image: pixelchat-gateway
+    container_name: pixelchat-gateway
+    ports:
+      - "80:80"
+    networks:
+      - pixelchat-network
+    environment:
+      - FRONTEND_URL=http://frontend:3000
+      - MESSAGE_API_URL=http://message_api:3001
+      - PORT=80
+    # depends_on:
+    #   - frontend
+    #   - message_api
+
+networks:
+  pixelchat-network:
+    name: pixelchat-network
+    driver: bridge
+

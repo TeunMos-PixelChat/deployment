@@ -25,19 +25,6 @@ spec:
         ports:
         - containerPort: 3000
 ---
-# Service for the front-end
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: pixelchat-frontend
-# spec:
-#   ports:
-#     - name: "3000"
-#       port: 3000
-#       targetPort: 3000
-# status:
-#   loadBalancer: {}
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -47,6 +34,7 @@ spec:
   ports:
   - port: 3000
     targetPort: 3000
-    nodePort: 30000
+    nodePort: 30009
   selector:
     app: pixelchat-frontend
+    

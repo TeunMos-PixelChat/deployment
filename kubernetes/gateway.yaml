@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pixelchat-gateway
+  labels:
+    app: pixelchat-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pixelchat-gateway
+  template:
+    metadata:
+      labels:
+        app: pixelchat-gateway
+    spec:
+      containers:
+      - name: pixelchat-gateway
+        image: pixelchat-gateway
+        imagePullPolicy: Never
+        resources:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        ports:
+        - containerPort: 80
+        env:
+        - name: FRONTEND_URL
+          value: http://pixelchat-frontend:3000
+        - name: MESSAGE_API_URL
+          value: http://pixelchat-message-api:3001
+        - name: PORT
+          value: "80"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pixelchat-gateway
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30000
+    
+  selector:
+    app: pixelchat-gateway
+    

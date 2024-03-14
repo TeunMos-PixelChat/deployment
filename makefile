@@ -1,17 +1,39 @@
-minikube_start:
+
+# Builds the containers for the kubernetes cluster
+build:
+	bash kubernetes_build_containers.sh
+
+deploy: build k-apply
+delete: k-delete
+
+# Kubernetes commands
+start:
 	minikube start --driver=docker --container-runtime=containerd
-
-minikube_stop:
+stop:
 	minikube stop
-
-kubectl_apply: kompose
-	kubectl apply -f frontend-deployment.yaml,frontend-service.yaml,message-api-deployment.yaml,message_api-service.yaml
-
-kubectl_delete:
-	kubectl delete -f frontend-deployment.yaml,frontend-service.yaml,message-api-deployment.yaml,message_api-service.yaml
-
 dashboard:
 	minikube dashboard
 
-kompose:
-	kompose convert
+# kubernetes deployment commands
+k-apply:
+	kubectl apply -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml
+k-delete:
+	kubectl delete -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml
+
+k-frontend:
+	minikube service pixelchat-frontend
+k-gateway:
+	minikube service pixelchat-gateway
+k-message-api:
+	minikube service pixelchat-message-api
+
+
+# Docker compose commands
+d-build:
+	bash docker_build_containers.sh
+d-deploy:
+	docker-compose up -d
+d-delete:
+	docker-compose down
+
+
