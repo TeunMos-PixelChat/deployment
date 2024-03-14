@@ -4,7 +4,7 @@ build:
 	bash kubernetes_build_containers.sh
 
 deploy: build k-apply
-delete: k-delete
+remake: k-delete k-apply
 
 # Kubernetes commands
 start:
@@ -31,7 +31,7 @@ k-message-api:
 # Docker compose commands
 d-build:
 	bash docker_build_containers.sh
-d-deploy:
+d-deploy: d-build
 	docker-compose up -d
 d-delete:
 	docker-compose down
