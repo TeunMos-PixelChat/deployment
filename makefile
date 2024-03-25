@@ -34,6 +34,8 @@ k-gateway:
 k-message-api:
 	minikube service pixelchat-message-api
 
+k-auth:
+	kubectl create -f kubernetes/dockerconfigjson.yaml
 
 # Docker compose commands
 d-build:
