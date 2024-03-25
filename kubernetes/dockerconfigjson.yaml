@@ -1,0 +1,9 @@
+kind: Secret
+type: kubernetes.io/dockerconfigjson
+apiVersion: v1
+metadata:
+  name: dockerconfigjson-github-com
+  labels:
+    app: app-name
+data:
+  .dockerconfigjson: __INSERT_BASE64_ENCODED_DOCKER_CONFIG_JSON_HERE__

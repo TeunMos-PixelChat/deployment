@@ -6,6 +6,13 @@ build:
 deploy: build k-apply
 remake: k-delete k-apply
 
+pull:
+	docker pull ghcr.io/teunmos-pixelchat/frontend:develop
+	docker pull ghcr.io/teunmos-pixelchat/gateway:develop
+	docker pull ghcr.io/teunmos-pixelchat/message-api:develop
+
+update: pull k-delete k-apply
+
 # Kubernetes commands
 start:
 	minikube start --driver=docker --container-runtime=containerd

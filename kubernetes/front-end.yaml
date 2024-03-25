@@ -16,14 +16,15 @@ spec:
     spec:
       containers:
       - name: pixelchat-frontend
-        image: pixelchat-frontend
-        imagePullPolicy: Never
+        image: ghcr.io/teunmos-pixelchat/frontend:develop
         resources:
           limits:
             cpu: 500m
             memory: 512Mi
         ports:
         - containerPort: 3000
+      imagePullSecrets:
+      - name: dockerconfigjson-github-com
 ---
 apiVersion: v1
 kind: Service

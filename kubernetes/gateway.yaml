@@ -16,8 +16,7 @@ spec:
     spec:
       containers:
       - name: pixelchat-gateway
-        image: pixelchat-gateway
-        imagePullPolicy: Never
+        image: ghcr.io/teunmos-pixelchat/gateway:develop
         resources:
           limits:
             cpu: 500m
@@ -31,6 +30,8 @@ spec:
           value: http://pixelchat-message-api:3001
         - name: PORT
           value: "80"
+      imagePullSecrets:
+      - name: dockerconfigjson-github-com
 ---
 apiVersion: v1
 kind: Service
