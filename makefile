@@ -45,4 +45,18 @@ d-deploy: d-build
 d-delete:
 	docker-compose down
 
+# Azure kubernetes commands for the PixelChat cluster
+aks-stop:
+	az aks stop --resource-group PixelChat_US --name PixelChat-Cluster
 
+aks-start:
+	az aks start --resource-group PixelChat_US --name PixelChat-Cluster
+
+aks-status:
+	@az aks show --resource-group PixelChat_US --name PixelChat-Cluster --query "powerState.code" | jq
+
+aks-credentials:
+	az aks get-credentials --resource-group PixelChat_US --name PixelChat-Cluster
+
+aks-credentials-unset:
+	kubectl config unset users.clusterUser_PixelChat-Cluster_PixelChat_US

@@ -19,23 +19,35 @@ spec:
         image: ghcr.io/teunmos-pixelchat/frontend:develop
         resources:
           limits:
-            cpu: 500m
-            memory: 512Mi
+            cpu: 250m
+            memory: 256Mi
         ports:
         - containerPort: 3000
       imagePullSecrets:
       - name: dockerconfigjson-github-com
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: pixelchat-frontend
+# spec:
+#   type: NodePort
+#   ports:
+#   - port: 3000
+#     targetPort: 3000
+#     nodePort: 30009
+#   selector:
+#     app: pixelchat-frontend
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: pixelchat-frontend
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
-  - port: 3000
+  - name: http
+    port: 3000
     targetPort: 3000
-    nodePort: 30009
   selector:
     app: pixelchat-frontend
-    

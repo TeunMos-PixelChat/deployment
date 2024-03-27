@@ -19,31 +19,40 @@ spec:
         image: ghcr.io/teunmos-pixelchat/message-api:develop
         resources:
           limits:
-            cpu: 500m
-            memory: 512Mi
+            cpu: 250m
+            memory: 256Mi
         ports:
         - containerPort: 3001
-        env:
+        # env:
         # - name: FRONTEND_URL
         #   value: http://pixelchat-frontend:3000
         # - name: MESSAGE_API_URL
         #   value: http://pixelchat-message_api:3001
-        - name: PORT
-          value: "3001"
       imagePullSecrets:
       - name: dockerconfigjson-github-com
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: pixelchat-message-api
+# spec:
+#   type: NodePort
+#   ports:
+#   - port: 3001
+#     targetPort: 3001
+#     nodePort: 30001
+#   selector:
+#     app: pixelchat-message-api
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: pixelchat-message-api
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
-  - port: 3001
+  - name: http
+    port: 3001
     targetPort: 3001
-    nodePort: 30001
-    
   selector:
     app: pixelchat-message-api
-    
