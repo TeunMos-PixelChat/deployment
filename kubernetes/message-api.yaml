@@ -17,6 +17,7 @@ spec:
       containers:
       - name: pixelchat-message-api
         image: ghcr.io/teunmos-pixelchat/message-api:develop
+        imagePullPolicy: Always
         resources:
           limits:
             cpu: 250m

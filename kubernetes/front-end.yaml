@@ -17,6 +17,7 @@ spec:
       containers:
       - name: pixelchat-frontend
         image: ghcr.io/teunmos-pixelchat/frontend:develop
+        imagePullPolicy: Always
         resources:
           limits:
             cpu: 250m

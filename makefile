@@ -1,3 +1,8 @@
+# variables
+RESOURCE_GROUP=PixelChat_US
+CLUSTER_NAME=PixelChat-Cluster
+
+
 
 # Builds the containers for the kubernetes cluster
 build:
@@ -60,3 +65,4 @@ aks-credentials:
 
 aks-credentials-unset:
 	kubectl config unset users.clusterUser_PixelChat-Cluster_PixelChat_US
+
