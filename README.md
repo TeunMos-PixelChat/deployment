@@ -1,4 +1,4 @@
-# Deploymen repository
+# Deployment repository
 
 > ### Don't forget to run `git submodule update --init --recursive` after cloning this repository, or use `git clone --recurse-submodules` to clone it.
 
