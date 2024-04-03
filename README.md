@@ -2,6 +2,9 @@
 
 > ### Don't forget to run `git submodule update --init --recursive` after cloning this repository, or use `git clone --recurse-submodules` to clone it.
 
+
+> See [Deployment.md](Deployment.md) for more (CI/CD) deployment specific information.
+
 This repo contains all other repositories and the configuration files used in the PixelChat project for deployment with `docker-compose` and `kubernetes`.
 
 # Running the project

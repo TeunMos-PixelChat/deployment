@@ -32,12 +32,12 @@ k-apply:
 k-delete:
 	kubectl delete -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml
 
-k-frontend:
-	minikube service pixelchat-frontend
-k-gateway:
-	minikube service pixelchat-gateway
-k-message-api:
-	minikube service pixelchat-message-api
+# k-frontend:
+# 	minikube service pixelchat-frontend
+# k-gateway:
+# 	minikube service pixelchat-gateway
+# k-message-api:
+# 	minikube service pixelchat-message-api
 
 k-auth:
 	kubectl create -f kubernetes/dockerconfigjson.yaml
