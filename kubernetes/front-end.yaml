@@ -16,11 +16,11 @@ spec:
     spec:
       containers:
       - name: pixelchat-frontend
-        image: ghcr.io/teunmos-pixelchat/frontend:develop
+        image: ghcr.io/teunmos-pixelchat/frontend:develop-1712143429
         imagePullPolicy: Always
         resources:
           limits:
-            cpu: 250m
+            cpu: 100m
             memory: 256Mi
         ports:
         - containerPort: 3000
