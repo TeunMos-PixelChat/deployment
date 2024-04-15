@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: pixelchat-message-api
-        image: ghcr.io/teunmos-pixelchat/message-api:develop
+        image: ghcr.io/teunmos-pixelchat/message-api:develop-1711627898
         imagePullPolicy: Always
         resources:
           limits:
