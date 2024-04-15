@@ -2,14 +2,26 @@
 RESOURCE_GROUP=PixelChat_US
 CLUSTER_NAME=PixelChat-Cluster
 
+# General commands
+authorize: k-auth
+deploy: k-apply
+undeploy: k-delete
 
-
-# Builds the containers for the kubernetes cluster
-build:
-	bash kubernetes_build_containers.sh
-
-deploy: build k-apply
 remake: k-delete k-apply
+deauthorize:
+	kubectl delete -f kubernetes/dockerconfigjson.yaml
+
+nuke: k-delete deauthorize
+
+# Kubectl commands
+pods:
+	kubectl get pods
+services:
+	kubectl get services
+
+
+deploy-local: pull d-deploy
+	
 
 pull:
 	docker pull ghcr.io/teunmos-pixelchat/frontend:develop
@@ -18,26 +30,13 @@ pull:
 
 update: pull k-delete k-apply
 
-# Kubernetes commands
-start:
-	minikube start --driver=docker --container-runtime=containerd
-stop:
-	minikube stop
-dashboard:
-	minikube dashboard
+
 
 # kubernetes deployment commands
 k-apply:
 	kubectl apply -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml
 k-delete:
 	kubectl delete -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml
-
-# k-frontend:
-# 	minikube service pixelchat-frontend
-# k-gateway:
-# 	minikube service pixelchat-gateway
-# k-message-api:
-# 	minikube service pixelchat-message-api
 
 k-auth:
 	kubectl create -f kubernetes/dockerconfigjson.yaml
@@ -49,6 +48,10 @@ d-deploy: d-build
 	docker-compose up -d
 d-delete:
 	docker-compose down
+
+
+
+
 
 # Azure kubernetes commands for the PixelChat cluster
 aks-stop:
@@ -66,3 +69,13 @@ aks-credentials:
 aks-credentials-unset:
 	kubectl config unset users.clusterUser_PixelChat-Cluster_PixelChat_US
 
+
+
+
+# MiniKube commands
+mini-start:
+	minikube start --driver=docker --container-runtime=containerd
+mini-stop:
+	minikube stop
+mini-dashboard:
+	minikube dashboard
