@@ -83,3 +83,8 @@ mini-stop:
 	minikube stop
 mini-dashboard:
 	minikube dashboard
+
+
+# read the docker secret from 1password (CLI)
+dockersecret:
+	@op read op://personal/DockerKube/dockerconfigjson
