@@ -6,18 +6,42 @@ CLUSTER_NAME=PixelChat-Cluster
 authorize: k-auth
 deploy: k-apply
 undeploy: k-delete
-
 remake: k-delete k-apply
-deauthorize:
-	kubectl delete -f kubernetes/dockerconfigjson.yaml
-
 nuke: k-delete deauthorize
 
-# Kubectl commands
+
+# Kubectl context commands
+contexts: k-context
+use-netlab: k-set-context-netlab
+use-azure: k-set-context-azure
+use-minikube: k-set-context-minikube
+use-docker-desktop: k-set-context-docker-desktop
+
+# Kubectl list commands
 pods:
 	kubectl get pods
 services:
 	kubectl get services
+
+
+
+k-context:
+	kubectl config get-contexts
+
+k-set-context-netlab:
+	kubectl config use-context s-a-rb04-grp3
+k-set-context-azure:
+	kubectl config use-context PixelChat-Cluster
+k-set-context-minikube:
+	kubectl config use-context minikube
+k-set-context-docker-desktop:
+	kubectl config use-context docker-desktop
+
+deauthorize:
+	kubectl delete -f kubernetes/dockerconfigjson.yaml
+
+
+
 
 
 deploy-local: pull d-deploy
