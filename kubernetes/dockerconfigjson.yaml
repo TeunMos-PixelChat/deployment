@@ -6,4 +6,4 @@ metadata:
   labels:
     app: app-name
 data:
-  .dockerconfigjson: __INSERT_BASE64_ENCODED_DOCKER_CONFIG_JSON_HERE__
+  .dockerconfigjson: eyJhdXRocyI6eyJnaGNyLmlvIjp7ImF1dGgiOiJWR1YxYmsxdmN6cG5hSEJmVkc5UldHUlNUWGRFYmtWYVZVSTBaR0ZGYmpaVVowSnVNVEJ1TlZGaE5ERnNWWFZDIn19fQ==

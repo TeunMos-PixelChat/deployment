@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: pixelchat-gateway
-        image: ghcr.io/teunmos-pixelchat/gateway:develop-1711627894
+        image: ghcr.io/teunmos-pixelchat/gateway:develop
         imagePullPolicy: Always
         resources:
           limits:

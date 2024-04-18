@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: pixelchat-frontend
-        image: ghcr.io/teunmos-pixelchat/frontend:develop-1712143429
+        image: ghcr.io/teunmos-pixelchat/frontend:develop
         imagePullPolicy: Always
         resources:
           limits:

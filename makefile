@@ -44,7 +44,7 @@ pull:
 
 # kubernetes deployment commands
 k-apply:
-	kubectl apply -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml
+	kubectl apply -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml,kubernetes/ingress.yaml
 k-delete:
 	kubectl delete -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml
 
