@@ -31,6 +31,14 @@ spec:
           value: http://pixelchat-message-api:3001
         - name: PORT
           value: "80"
+        - name: NODE_ENV
+          value: "production"
+        - name: AUTH0_AUDIENCE
+          value: "pixelchat-gateway-identifier"
+        - name: AUTH0_DOMAIN
+          value: "pixelchat-production.eu.auth0.com"
+        - name: AUTH0_BASE_URL
+          value: "https://pixelchat-production.eu.auth0.com"
       imagePullSecrets:
       - name: dockerconfigjson-github-com
 ---
