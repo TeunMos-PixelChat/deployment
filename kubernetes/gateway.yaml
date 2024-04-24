@@ -20,7 +20,7 @@ spec:
         imagePullPolicy: Always
         resources:
           limits:
-            cpu: 500m
+            cpu: 1000m
             memory: 512Mi
         ports:
         - containerPort: 80
@@ -42,19 +42,6 @@ spec:
       imagePullSecrets:
       - name: dockerconfigjson-github-com
 ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: pixelchat-gateway
-# spec:
-#   type: NodePort
-#   ports:
-#   - port: 80
-#     targetPort: 80
-#     nodePort: 30000
-#   selector:
-#     app: pixelchat-gateway
-# ---
 apiVersion: v1
 kind: Service
 metadata:

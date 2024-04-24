@@ -20,7 +20,7 @@ spec:
         imagePullPolicy: Always
         resources:
           limits:
-            cpu: 500m
+            cpu: 1000m
             memory: 512Mi
         ports:
         - containerPort: 3001
@@ -31,19 +31,6 @@ spec:
         #   value: http://pixelchat-message_api:3001
       imagePullSecrets:
       - name: dockerconfigjson-github-com
-# ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: pixelchat-message-api
-# spec:
-#   type: NodePort
-#   ports:
-#   - port: 3001
-#     targetPort: 3001
-#     nodePort: 30001
-#   selector:
-#     app: pixelchat-message-api
 ---
 apiVersion: v1
 kind: Service
