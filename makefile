@@ -77,12 +77,13 @@ aks-credentials-unset:
 
 
 # MiniKube commands
-mini-start:
-	minikube start --driver=docker --container-runtime=containerd
-mini-stop:
-	minikube stop
-mini-dashboard:
-	minikube dashboard
+# mini-start:
+# 	minikube start --driver=docker --container-runtime=containerd
+# mini-stop:
+# 	minikube stop
+# mini-dashboard:
+# 	minikube dashboard
+
 
 
 # read the docker secret from 1password (CLI)

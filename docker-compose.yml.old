@@ -2,21 +2,21 @@ version: "3.8"
 
 services:
   frontend:
-    image: pixelchat-frontend:latest
+    image: ghcr.io/teunmos-pixelchat/frontend:develop
     container_name: pixelchat-frontend
     ports:
       - "3000:3000"
     networks:
       - pixelchat-network
   message_api:
-    image: pixelchat-message-api:latest
+    image: ghcr.io/teunmos-pixelchat/message-api:develop
     container_name: pixelchat-message-api
     ports:
       - "3001:3001"
     networks:
       - pixelchat-network
   gateway:
-    image: pixelchat-gateway:latest
+    image: ghcr.io/teunmos-pixelchat/gateway:develop
     container_name: pixelchat-gateway
     ports:
       - "80:80"
@@ -26,9 +26,10 @@ services:
       - FRONTEND_URL=http://frontend:3000
       - MESSAGE_API_URL=http://message_api:3001
       - PORT=80
-      - NODE_ENV=production
-      - AUTH0_AUDIENCE=pixelchat-gateway-identifier
-      - AUTH0_DOMAIN=pixelchat-dev.eu.auth0.com
+      # - NODE_ENV=production
+      # - AUTH0_AUDIENCE=pixelchat-gateway-identifier
+      # - AUTH0_DOMAIN=pixelchat-production.eu.auth0.com
+      # - AUTH0_BASE_URL=https://pixelchat-production.eu.auth0.com
 networks:
   pixelchat-network:
     name: pixelchat-network
