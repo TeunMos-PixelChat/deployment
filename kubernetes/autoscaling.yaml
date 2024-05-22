@@ -1,0 +1,39 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+ name: pixelchat-frontend
+spec:
+ scaleTargetRef:
+   apiVersion: apps/v1
+   kind: Deployment
+   name: pixelchat-frontend
+ minReplicas: 1
+ maxReplicas: 3
+ targetCPUUtilizationPercentage: 75
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+ name: pixelchat-gateway
+spec:
+ scaleTargetRef:
+   apiVersion: apps/v1
+   kind: Deployment
+   name: pixelchat-gateway
+ minReplicas: 1
+ maxReplicas: 3
+ targetCPUUtilizationPercentage: 75
+
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+ name: pixelchat-postgres
+spec:
+ scaleTargetRef:
+   apiVersion: apps/v1
+   kind: Deployment
+   name: pixelchat-postgres
+ minReplicas: 1
+ maxReplicas: 5
+ targetCPUUtilizationPercentage: 50

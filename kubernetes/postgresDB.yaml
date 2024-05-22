@@ -1,0 +1,64 @@
+# This is every deployment and service needed for the postgres database
+
+# Config Map for the postgres database
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-secret
+  labels:
+    app: pixelchat-postgres
+data:
+  POSTGRES_DB: pixelchat
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: epicPassword
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pixelchat-postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pixelchat-postgres
+  template:
+    metadata:
+      labels:
+        app: pixelchat-postgres
+    spec:
+      containers:
+        - name: pixelchat-postgres
+          image: 'postgres:14'
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: postgres-secret
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgresdata
+          resources:
+            limits:
+              cpu: 750m
+              memory: 512Mi
+        
+      volumes:
+        - name: postgresdata
+          persistentVolumeClaim:
+            claimName: postgres-volume-claim
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: pixelchat-postgres
+  labels:
+    app: pixelchat-postgres
+spec:
+  type: NodePort
+  ports:
+    - port: 5432
+  selector:
+    app: pixelchat-postgres

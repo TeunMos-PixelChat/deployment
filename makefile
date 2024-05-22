@@ -43,10 +43,17 @@ pull:
 
 
 # kubernetes deployment commands
-k-apply:
-	kubectl apply -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml,kubernetes/ingress.yaml
+k-apply: k-apply-v
+	kubectl apply -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml,kubernetes/ingress.yaml,kubernetes/autoscaling.yaml,kubernetes/postgresDB.yaml
 k-delete:
-	kubectl delete -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml,kubernetes/ingress.yaml
+	kubectl delete -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml,kubernetes/ingress.yaml,kubernetes/autoscaling.yaml,kubernetes/postgresDB.yaml
+
+# kubernetes volume commands
+k-apply-v:
+	kubectl apply -f kubernetes/postgresVolume.yaml
+k-delete-v:
+	kubectl delete -f kubernetes/postgresVolume.yaml
+
 
 k-auth:
 	kubectl create -f kubernetes/dockerconfigjson.yaml
