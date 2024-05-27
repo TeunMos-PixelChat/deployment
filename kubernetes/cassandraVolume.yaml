@@ -1,0 +1,31 @@
+# Volume for the postgres database
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: cassandra-volume
+  labels:
+    type: local
+    app: cassandra
+spec:
+  storageClassName: fast
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: /data/cassandra
+---
+# Volume Claim for the postgres database (A volume claim is a request for storage by a pod)
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cassandra-volume-claim
+  labels:
+    app: pixelchat-cassandra
+spec:
+  storageClassName: fast
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
