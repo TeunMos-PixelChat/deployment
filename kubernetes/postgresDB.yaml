@@ -1,5 +1,8 @@
 # This is every deployment and service needed for the postgres database
 
+# https://www.bmc.com/blogs/kubernetes-postgresql/
+
+
 # Config Map for the postgres database
 apiVersion: v1
 kind: ConfigMap
@@ -11,12 +14,15 @@ data:
   POSTGRES_DB: pixelchat
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: epicPassword
+
 ---
+# A StatefulSet is a controller that is used to manage stateful applications
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: pixelchat-postgres
 spec:
+  serviceName: pixelchat-postgres
   replicas: 1
   selector:
     matchLabels:
@@ -27,26 +33,75 @@ spec:
         app: pixelchat-postgres
     spec:
       containers:
-        - name: pixelchat-postgres
-          image: 'postgres:14'
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 5432
+        - name: postgres
+          image: postgres:13
           envFrom:
             - configMapRef:
                 name: postgres-secret
+          env:
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+          ports:
+            - containerPort: 5432
+              name: postgres
           volumeMounts:
-            - mountPath: /var/lib/postgresql/data
-              name: postgresdata
+            - name: postgresdata
+              mountPath: /var/lib/postgresql/data
           resources:
             limits:
               cpu: 1000m
               memory: 512Mi
+  volumeClaimTemplates:
+    - metadata:
+        name: postgresdata
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 15Gi
+  # volumes:
+  #   - name: postgresdata
+  #     persistentVolumeClaim:
+  #       claimName: postgres-volume-claim
+
+
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: pixelchat-postgres
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: pixelchat-postgres
+#   template:
+#     metadata:
+#       labels:
+#         app: pixelchat-postgres
+#     spec:
+#       containers:
+#         - name: pixelchat-postgres
+#           image: 'postgres:14'
+#           imagePullPolicy: IfNotPresent
+#           ports:
+#             - containerPort: 5432
+#           envFrom:
+#             - configMapRef:
+#                 name: postgres-secret
+#           volumeMounts:
+#             - mountPath: /var/lib/postgresql/data
+#               name: postgresdata
+#           resources:
+#             limits:
+#               cpu: 1000m
+#               memory: 512Mi
         
-      volumes:
-        - name: postgresdata
-          persistentVolumeClaim:
-            claimName: postgres-volume-claim
+#       volumes:
+#         - name: postgresdata
+#           persistentVolumeClaim:
+#             claimName: postgres-volume-claim
 
 ---
 
@@ -62,3 +117,4 @@ spec:
     - port: 5432
   selector:
     app: pixelchat-postgres
+
