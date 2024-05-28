@@ -29,6 +29,8 @@ spec:
           value: http://pixelchat-frontend:3000
         - name: MESSAGE_API_URL
           value: http://pixelchat-message-api:3001
+        - name: USER_SERVICE_URL
+          value: http://pixelchat-user-service:3002
         - name: PORT
           value: "80"
         - name: NODE_ENV

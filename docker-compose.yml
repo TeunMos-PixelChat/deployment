@@ -29,8 +29,47 @@ services:
       - NODE_ENV=production
       - AUTH0_AUDIENCE=pixelchat-gateway-identifier
       - AUTH0_DOMAIN=pixelchat-dev.eu.auth0.com
+  user_service:
+    image: pixelchat-user-service:latest
+    container_name: pixelchat-user-service
+    networks:
+      - pixelchat-network
+    environment:
+      - POSTGRES_CONN_STRING=postgres://postgres:epicPassword@pixelchat-postgres:5432/postgres
+  postgres_db:
+    image: postgres:13
+    container_name: pixelchat-postgres
+    networks:
+      - pixelchat-network
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=epicPassword
+      - POSTGRES_DB=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  cassandra_db:
+    image: cassandra:3.11
+    container_name: pixelchat-cassandra
+    networks:
+      - pixelchat-network
+    environment:
+      - CASSANDRA_CLUSTER_NAME=pixelchat
+      - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+      - CASSANDRA_DC=DC1
+      - CASSANDRA_RACK=RAC1
+    ports:
+      - "9042:9042"
+    volumes:
+      - cassandra_data:/var/lib/cassandra
+
+
 networks:
   pixelchat-network:
     name: pixelchat-network
     driver: bridge
 
+volumes:
+  postgres_data:
+    name: postgres_data
+  cassandra_data:
+    name: cassandra_data
