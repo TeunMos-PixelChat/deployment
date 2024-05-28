@@ -44,9 +44,9 @@ pull:
 
 # kubernetes deployment commands
 k-apply:
-	kubectl apply -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml,kubernetes/ingress.yaml,kubernetes/autoscaling.yaml,kubernetes/postgresDB.yaml,kubernetes/user-service.yaml
+	kubectl apply -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml,kubernetes/ingress.yaml,kubernetes/autoscaling.yaml,kubernetes/postgresDB.yaml,kubernetes/user-service.yaml,kubernetes/cassandraDB.yaml
 k-delete:
-	kubectl delete -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml,kubernetes/ingress.yaml,kubernetes/autoscaling.yaml,kubernetes/postgresDB.yaml,kubernetes/user-service.yaml
+	kubectl delete -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml,kubernetes/ingress.yaml,kubernetes/autoscaling.yaml,kubernetes/postgresDB.yaml,kubernetes/user-service.yaml,kubernetes/cassandraDB.yaml
 
 k-apply-secret:
 	kubectl apply -f kubernetes/dockerconfigjson.yaml
@@ -111,3 +111,6 @@ aks-credentials-unset:
 # read the docker secret from 1password (CLI)
 dockersecret:
 	@op read op://personal/DockerKube/dockerconfigjson
+
+cassandra-status:
+	kubectl exec -it pixelchat-cassandra-0 -- nodetool status

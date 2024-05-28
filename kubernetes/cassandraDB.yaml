@@ -1,19 +1,31 @@
 
-# https://kubernetes.io/docs/tutorials/stateful-application/cassandra/  
-
-
+# https://kubernetes.io/docs/tutorials/stateful-application/cassandra/
+# https://github.com/IBM/Scalable-Cassandra-deployment-on-Kubernetes/blob/master/README.md
+apiVersion: v1
+kind: Service
+metadata:
+  name: pixelchat-cassandra-external
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 9042
+    targetPort: 9042
+  selector:
+    app: pixelchat-cassandra
+---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: cassandra
-  name: cassandra
+    app: pixelchat-cassandra
+  name: pixelchat-cassandra
 spec:
   clusterIP: None
   ports:
   - port: 9042
   selector:
-    app: cassandra
+    app: pixelchat-cassandra
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -23,7 +35,7 @@ metadata:
     app: pixelchat-cassandra
 spec:
   serviceName: pixelchat-cassandra
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: pixelchat-cassandra
@@ -35,7 +47,7 @@ spec:
       terminationGracePeriodSeconds: 1800
       containers:
       - name: cassandra
-        image: cassandra:4
+        image: gcr.io/google-samples/cassandra:v13
         imagePullPolicy: Always
         ports:
         - containerPort: 7000
@@ -67,7 +79,7 @@ spec:
           - name: HEAP_NEWSIZE
             value: 100M
           - name: CASSANDRA_SEEDS
-            value: "pixelchat-cassandra-0.cassandra.default.svc.cluster.local"
+            value: "pixelchat-cassandra-0.pixelchat-cassandra.default.svc.cluster.local"
           - name: CASSANDRA_CLUSTER_NAME
             value: "pixelchatCassandra"
           - name: CASSANDRA_DC
@@ -90,17 +102,17 @@ spec:
         # but not exactly because the names need to match exactly one of
         # the stateful pod volumes.
         volumeMounts:
-        - name: cassandradata
+        - name: cassandra-data
           mountPath: /cassandra_data
   # These are converted to volume claims by the controller
   # and mounted at the paths mentioned above.
   # do not use these in production until ssd GCEPersistentDisk or other ssd pd
   volumeClaimTemplates:
-    - metadata:
-        name: cassandradata
-      spec:
-        accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: 10Gi
+      - metadata:
+          name: cassandra-data
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 3Gi
