@@ -15,6 +15,8 @@ services:
       - "3001:3001"
     networks:
       - pixelchat-network
+    environment:
+      - CASSANDRA_CONTACT_POINTS=pixelchat-cassandra
   gateway:
     image: pixelchat-gateway:latest
     container_name: pixelchat-gateway
@@ -47,16 +49,18 @@ services:
       - POSTGRES_DB=postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
   cassandra_db:
     image: cassandra:3.11
     container_name: pixelchat-cassandra
     networks:
       - pixelchat-network
     environment:
-      - CASSANDRA_CLUSTER_NAME=pixelchat
+      - CASSANDRA_CLUSTER_NAME=pixelchatCassandra
       - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
-      - CASSANDRA_DC=DC1
-      - CASSANDRA_RACK=RAC1
+      - CASSANDRA_DC=DC1-pixelchatCassandra
+      - CASSANDRA_RACK=Rack1-pixelchatCassandra
     ports:
       - "9042:9042"
     volumes:

@@ -10,3 +10,4 @@ docker build \
 
 docker build -t pixelchat-message-api:latest -f ./message-api/Dockerfile ./message-api
 docker build -t pixelchat-gateway:latest -f ./gateway/Dockerfile ./gateway
+docker build -t pixelchat-user-service:latest -f ./user-service/Dockerfile ./user-service
