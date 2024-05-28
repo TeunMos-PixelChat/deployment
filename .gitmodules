@@ -10,3 +10,6 @@
 [submodule "gateway"]
 	path = gateway
 	url = git@github.com:TeunMos-PixelChat/gateway.git
+[submodule "user-service"]
+	path = user-service
+	url = git@github.com:TeunMos-PixelChat/user-service.git

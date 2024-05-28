@@ -1,14 +1,4 @@
 # https://stackgres.io/
-apiVersion: v1
-kind: Secret
-metadata:
-  name: postgres-credentials
-type: Opaque
-data:
-  username: cG9zdGdyZXM=  # Base64 encoded 'postgres'
-  password: ZXBpY1Bhc3N3b3Jk
----
-
 apiVersion: stackgres.io/v1
 kind: SGCluster
 metadata:
@@ -32,16 +22,16 @@ spec:
       size: '5Gi'
   autoscaling:
     minInstances: 2
-    maxInstances: 5
+    maxInstances: 4
     maxAllowed:
       envoy:
-        cpu: 400m
+        cpu: 1000m
         memory: 1Gi
       patroni:
-        cpu: 400m
+        cpu: 1000m
         memory: 1Gi
       pgbouncer:
-        cpu: 400m 
+        cpu: 1000m 
         memory: 1Gi
     minAllowed:
       envoy:

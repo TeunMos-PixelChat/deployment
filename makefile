@@ -43,20 +43,35 @@ pull:
 
 
 # kubernetes deployment commands
-k-apply: k-apply-v
-	kubectl apply -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml,kubernetes/ingress.yaml,kubernetes/autoscaling.yaml,kubernetes/postgresDB.yaml
+k-apply:
+	kubectl apply -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml,kubernetes/ingress.yaml,kubernetes/autoscaling.yaml,kubernetes/postgresDB.yaml,kubernetes/user-service.yaml
 k-delete:
-	kubectl delete -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml,kubernetes/ingress.yaml,kubernetes/autoscaling.yaml,kubernetes/postgresDB.yaml
+	kubectl delete -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml,kubernetes/ingress.yaml,kubernetes/autoscaling.yaml,kubernetes/postgresDB.yaml,kubernetes/user-service.yaml
 
-# kubernetes volume commands
-k-apply-v:
-	kubectl apply -f kubernetes/postgresVolume.yaml,kubernetes/cassandraVolume.yaml
-k-delete-v:
-	kubectl delete -f kubernetes/postgresVolume.yaml,kubernetes/cassandraVolume.yaml
+k-apply-secret:
+	kubectl apply -f kubernetes/dockerconfigjson.yaml
 
 
+
+
+# # kubernetes volume commands
+# k-apply-v:
+# 	kubectl apply -f kubernetes/postgresVolume.yaml,kubernetes/cassandraVolume.yaml
+# k-delete-v:
+# 	kubectl delete -f kubernetes/postgresVolume.yaml,kubernetes/cassandraVolume.yaml
+
+
+
+# use 1password cli to get docker secret
 k-auth:
-	kubectl create -f kubernetes/dockerconfigjson.yaml
+	cp kubernetes/dockerconfigjson.yaml kubernetes/dockerconfigjson.secret.yaml
+	sed -i 's/\(.dockerconfigjson: \).*/\1$(shell op read op://personal/DockerKube/dockerconfigjson)/' kubernetes/dockerconfigjson.secret.yaml
+
+	kubectl apply -f kubernetes/dockerconfigjson.secret.yaml
+
+	cp kubernetes/secrets.yaml kubernetes/secrets.secret.yaml
+	# sed -i 's/\(.dockerconfigjson: \).*/\1$(shell op read op://personal/DockerKube/dockerconfigjson)/' kubernetes/secrets.secret.yaml
+	kubectl apply -f kubernetes/secrets.secret.yaml
 
 
 

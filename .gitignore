@@ -1,3 +1,2 @@
-# Kompose output
-*service.yaml
-*deployment.yaml
+
+*.secret.yaml
