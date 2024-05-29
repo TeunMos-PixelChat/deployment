@@ -5,8 +5,10 @@
   - [ ] Resource mapping
 - [ ] services implementeren in kubernetes
 - [ ] GDPR (Document)
-- [ ] SEcurity
-  - [ ] OWASP
+- [ ] Security
+  - [ ] OWASP top 10
+  - [ ] static code analysis
+- [ ] messaging tussen user-service en message-api (voor user deletion)
 - [ ] Documentatie
   - [ ] Uitleg over waarom ik hpa's gebruik
-  - [ ] even kijken of alles up to date is
+  - [ ] C4 diagram

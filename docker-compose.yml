@@ -27,6 +27,7 @@ services:
     environment:
       - FRONTEND_URL=http://frontend:3000
       - MESSAGE_API_URL=http://message_api:3001
+      - USER_SERVICE_URL=http://user_service:3002
       - PORT=80
       - NODE_ENV=production
       - AUTH0_AUDIENCE=pixelchat-gateway-identifier
@@ -38,6 +39,9 @@ services:
       - pixelchat-network
     environment:
       - POSTGRES_CONN_STRING=postgres://postgres:epicPassword@pixelchat-postgres:5432/postgres
+      - AUTH0_CLIENT_ID=HdJv6Up3hFtaM2Ul1XHWoFJq3mmbZOoJ
+      - AUTH0_CLIENT_SECRET=11rWCxSTbBuJAMyF2UtjHsUt1MIirrpB3FdTVjkZVhKRlEt1hhKK4-PURFnyTJps
+      - AUTH0_DOMAIN=pixelchat-dev.eu.auth0.com
   postgres_db:
     image: postgres:13
     container_name: pixelchat-postgres
