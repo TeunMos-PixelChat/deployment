@@ -71,14 +71,12 @@ k-auth:
 
 	cp kubernetes/secrets.yaml kubernetes/secrets.secret.yaml
 
-	sed -i 's/\(POSTGRES_CONN_STRING: \).*/\1$(echo -n "$(op read op://school/pixelchat-user-service-env/postgres_conn_string)" | base64)/' kubernetes/secrets.secret.yaml
-	sed -i 's/\(AUTH0_CLIENT_ID: \).*/\1$(shell op read op://school/pixelchat-user-service-env/auth0_client_id | base64)/' kubernetes/secrets.secret.yaml
-	sed -i 's/\(AUTH0_CLIENT_SECRET: \).*/\1$(shell op read op://school/pixelchat-user-service-env/auth0_client_secret | base64)/' kubernetes/secrets.secret.yaml
-	sed -i 's/\(AUTH0_DOMAIN: \).*/\1$(shell op read op://school/pixelchat-user-service-env/auth0_domain | base64)/' kubernetes/secrets.secret.yaml
+	sed -i 's/\(POSTGRES_CONN_STRING: \).*/\1$(shell op read op://school/pixelchat-user-service-env/postgres_conn_string | base64 -w 0)/' kubernetes/secrets.secret.yaml
+	sed -i 's/\(AUTH0_CLIENT_ID: \).*/\1$(shell op read op://school/pixelchat-user-service-env/auth0_client_id | base64 -w 0)/' kubernetes/secrets.secret.yaml
+	sed -i 's/\(AUTH0_CLIENT_SECRET: \).*/\1$(shell op read op://school/pixelchat-user-service-env/auth0_client_secret | base64 -w 0)/' kubernetes/secrets.secret.yaml
+	sed -i 's/\(AUTH0_DOMAIN: \).*/\1$(shell op read op://school/pixelchat-user-service-env/auth0_domain | base64 -w 0)/' kubernetes/secrets.secret.yaml
 
 	kubectl apply -f kubernetes/secrets.secret.yaml
-
-
 
 # Docker compose commands
 d-build:
