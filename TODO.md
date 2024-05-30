@@ -4,7 +4,7 @@
 
 #### Deze sprint:
 - [ ] database research afronden
-  - [x] databases implementeren in kubernetes
+  - [ ] databases implementeren in kubernetes
   - [ ] databases testen in kubernetes (artillery.io)
 - [ ] alle services implementeren in kubernetes
   - [ ] user-service (met database connectie)

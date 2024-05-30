@@ -17,6 +17,9 @@ services:
       - pixelchat-network
     environment:
       - CASSANDRA_CONTACT_POINTS=pixelchat-cassandra
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_USER=guest
+      - RABBITMQ_PASS=guest
   gateway:
     image: pixelchat-gateway:latest
     container_name: pixelchat-gateway
@@ -42,6 +45,11 @@ services:
       - AUTH0_CLIENT_ID=HdJv6Up3hFtaM2Ul1XHWoFJq3mmbZOoJ
       - AUTH0_CLIENT_SECRET=11rWCxSTbBuJAMyF2UtjHsUt1MIirrpB3FdTVjkZVhKRlEt1hhKK4-PURFnyTJps
       - AUTH0_DOMAIN=pixelchat-dev.eu.auth0.com
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_USER=guest
+      - RABBITMQ_PASS=guest
+    ports:
+      - "3002:3002"
   postgres_db:
     image: postgres:13
     container_name: pixelchat-postgres
@@ -69,6 +77,15 @@ services:
       - "9042:9042"
     volumes:
       - cassandra_data:/var/lib/cassandra
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - pixelchat-network
 
 
 networks:
