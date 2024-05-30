@@ -25,13 +25,13 @@ spec:
     maxInstances: 4
     maxAllowed:
       envoy:
-        cpu: 1000m
+        cpu: 1500m
         memory: 1Gi
       patroni:
-        cpu: 1000m
+        cpu: 1500m
         memory: 1Gi
       pgbouncer:
-        cpu: 1000m 
+        cpu: 1500m 
         memory: 1Gi
     minAllowed:
       envoy:

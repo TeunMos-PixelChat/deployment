@@ -1,14 +1,30 @@
 # TODO lijstje
 
-- [ ] research afronden
-  - [ ] databases implementeren in kubernetes
-  - [ ] Resource mapping
-- [ ] services implementeren in kubernetes
+
+
+#### Deze sprint:
+- [ ] database research afronden
+  - [x] databases implementeren in kubernetes
+  - [ ] databases testen in kubernetes (artillery.io)
+- [ ] alle services implementeren in kubernetes
+  - [ ] user-service (met database connectie)
+  - [x] chat-message-api (met database connectie)
+
+---
+
+#### Volgende sprint:
+
 - [ ] GDPR (Document)
+- [ ] Resource mapping
 - [ ] Security
   - [ ] OWASP top 10
   - [ ] static code analysis
-- [ ] messaging tussen user-service en message-api (voor user deletion)
-- [ ] Documentatie
-  - [ ] Uitleg over waarom ik hpa's gebruik
-  - [ ] C4 diagram
+- [ ] messaging tussen user-service en message-api
+
+
+
+
+---
+#### Notities na feedback
+- [ ] Uitleg over waarom ik hpa's gebruik
+- [ ] C4 diagrammen
