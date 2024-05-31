@@ -19,6 +19,9 @@ spec:
         image: ghcr.io/teunmos-pixelchat/frontend:develop
         imagePullPolicy: Always
         resources:
+          requests:
+            cpu: 300m
+            memory: 256Mi
           limits:
             cpu: 750m
             memory: 512Mi

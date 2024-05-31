@@ -19,12 +19,21 @@ spec:
         image: ghcr.io/teunmos-pixelchat/user-service:develop
         imagePullPolicy: Always
         resources:
+          requests:
+            cpu: 200m
+            memory: 256Mi
           limits:
             cpu: 350m
             memory: 512Mi
         ports:
         - containerPort: 3002
         env:
+        - name: RABBITMQ_HOST	
+          value: pixelchat-rabbitmq
+        - name: RABBITMQ_USER
+          value: guest
+        - name: RABBITMQ_PASS
+          value: guest
         - name: POSTGRES_CONN_STRING
           valueFrom:
             secretKeyRef:
@@ -45,6 +54,7 @@ spec:
             secretKeyRef:
               name: pixelchat-auth0-secret
               key: AUTH0_DOMAIN
+              
       imagePullSecrets:
       - name: dockerconfigjson-github-com
 ---

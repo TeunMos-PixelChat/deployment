@@ -43,10 +43,10 @@ pull:
 
 
 # kubernetes deployment commands
-k-apply:
-	kubectl apply -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml,kubernetes/ingress.yaml,kubernetes/autoscaling.yaml,kubernetes/postgresDB.yaml,kubernetes/user-service.yaml,kubernetes/cassandraDB.yaml
+k-apply: k-apply-rabbitmq
+	kubectl apply -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml,kubernetes/ingress.yaml,kubernetes/autoscaling.yaml,kubernetes/postgresDB.yaml,kubernetes/user-service.yaml,kubernetes/cassandraDB.yaml,kubernetes/rabbitmq.yaml
 k-delete:
-	kubectl delete -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml,kubernetes/ingress.yaml,kubernetes/autoscaling.yaml,kubernetes/postgresDB.yaml,kubernetes/user-service.yaml,kubernetes/cassandraDB.yaml
+	kubectl delete -f kubernetes/front-end.yaml,kubernetes/gateway.yaml,kubernetes/message-api.yaml,kubernetes/ingress.yaml,kubernetes/autoscaling.yaml,kubernetes/postgresDB.yaml,kubernetes/user-service.yaml,kubernetes/cassandraDB.yaml,kubernetes/rabbitmq.yaml
 
 k-apply-secret:
 	kubectl apply -f kubernetes/dockerconfigjson.yaml
@@ -77,6 +77,10 @@ k-auth:
 	sed -i 's/\(AUTH0_DOMAIN: \).*/\1$(shell echo -n $(shell op read op://school/pixelchat-user-service-env/auth0_domain) | base64 -w 0)/' kubernetes/secrets.secret.yaml
 
 	kubectl apply -f kubernetes/secrets.secret.yaml
+
+k-apply-rabbitmq:
+	kubectl apply -f https://github.com/rabbitmq/cluster-operator/releases/latest/download/cluster-operator.yml
+
 
 # Docker compose commands
 d-build:
