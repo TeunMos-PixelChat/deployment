@@ -4,10 +4,10 @@
 
 #### Deze sprint:
 - [ ] database research afronden
-  - [ ] databases implementeren in kubernetes
+  - [x] databases implementeren in kubernetes
   - [ ] databases testen in kubernetes (artillery.io)
-- [ ] alle services implementeren in kubernetes
-  - [ ] user-service (met database connectie)
+- [x] alle services implementeren in kubernetes
+  - [x] user-service (met database connectie)
   - [x] chat-message-api (met database connectie)
 
 ---
@@ -19,7 +19,7 @@
 - [ ] Security
   - [ ] OWASP top 10
   - [ ] static code analysis
-- [ ] messaging tussen user-service en message-api
+- [x] messaging tussen user-service en message-api
 
 
 
