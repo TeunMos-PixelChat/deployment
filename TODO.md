@@ -12,6 +12,7 @@
 
 ---
 
+
 #### Volgende sprint:
 
 - [ ] GDPR (Document)
