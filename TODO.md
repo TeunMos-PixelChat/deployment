@@ -1,11 +1,11 @@
-# TODO lijstje
+# TODO lijstje voor wat ik nog moet doen dit semester
 
 
 
-#### Deze sprint:
-- [ ] database research afronden
+#### Sprint 4:
+- [x] database research
   - [x] databases implementeren in kubernetes
-  - [ ] databases testen in kubernetes (artillery.io)
+  - [x] databases testen in kubernetes (artillery.io)
 - [x] alle services implementeren in kubernetes
   - [x] user-service (met database connectie)
   - [x] chat-message-api (met database connectie)
@@ -13,19 +13,18 @@
 ---
 
 
-#### Volgende sprint:
+#### Sprint 5:
 
-- [ ] GDPR (Document)
 - [ ] Resource mapping
+- [ ] GDPR (Document)
 - [ ] Security
   - [ ] OWASP top 10
   - [ ] static code analysis
 - [x] messaging tussen user-service en message-api
 
 
-
-
 ---
-#### Notities na feedback
+#### Algemeen (na feedback sessies):
 - [ ] Uitleg over waarom ik hpa's gebruik
-- [ ] C4 diagrammen
+- [x] C4 diagrammen
+- [ ] feedback van Onno over research document verwerken (zie feedpulse)
