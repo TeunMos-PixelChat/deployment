@@ -1,4 +1,4 @@
-# TODO lijstje voor wat ik nog moet doen dit semester
+# TODO lijstje
 
 
 
@@ -15,16 +15,16 @@
 
 #### Sprint 5:
 
-- [ ] Resource mapping
+- ~ Resource mapping
 - [ ] GDPR (Document)
 - [ ] Security
   - [ ] OWASP top 10
   - [ ] static code analysis
 - [x] messaging tussen user-service en message-api
 
-
 ---
 #### Algemeen (na feedback sessies):
 - [ ] Uitleg over waarom ik hpa's gebruik
 - [x] C4 diagrammen
 - [ ] feedback van Onno over research document verwerken (zie feedpulse)
+- [ ] Video van de autoscaling, met uitleg
