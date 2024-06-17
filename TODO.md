@@ -15,16 +15,20 @@
 
 #### Sprint 5:
 
-- ~ Resource mapping
-- [ ] GDPR (Document)
-- [ ] Security
-  - [ ] OWASP top 10
-  - [ ] static code analysis
+- [x] ~~~~ Resource mapping
+- [x] GDPR (Document)
+  - [x] Documenteer wat er met de data moet gebeuren
+  - [x] Users deleten in database
+- [x] Security
+  - [x] OWASP top 10
+  - [x] static code analysis
 - [x] messaging tussen user-service en message-api
 
 ---
 #### Algemeen (na feedback sessies):
 - [ ] Uitleg over waarom ik hpa's gebruik
 - [x] C4 diagrammen
-- [ ] feedback van Onno over research document verwerken (zie feedpulse)
+- [x] feedback van Onno over research document verwerken (zie feedpulse)
+- [ ] feedback van Onno over research document verwerken part 2 (zie feedpulse)
 - [ ] Video van de autoscaling, met uitleg
+- [ ] (Optioneel) username kunnen veranderen
