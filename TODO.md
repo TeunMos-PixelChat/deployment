@@ -25,10 +25,12 @@
 - [x] messaging tussen user-service en message-api
 
 ---
-#### Algemeen (na feedback sessies):
-- [ ] Uitleg over waarom ik hpa's gebruik
+#### Algemeen:
 - [x] C4 diagrammen
 - [x] feedback van Onno over research document verwerken (zie feedpulse)
+- [ ] Architectuur document updaten (Description bij pijlen)
+- [ ] Uitleg over waarom ik hpa's gebruik
 - [ ] feedback van Onno over research document verwerken part 2 (zie feedpulse)
 - [ ] Video van de autoscaling, met uitleg
+- [ ] Portfolio
 - [ ] (Optioneel) username kunnen veranderen
