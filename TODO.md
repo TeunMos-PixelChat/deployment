@@ -28,7 +28,7 @@
 #### Algemeen:
 - [x] C4 diagrammen
 - [x] feedback van Onno over research document verwerken (zie feedpulse)
-- [ ] Architectuur document updaten (Description bij pijlen)
+- [x] Architectuur document updaten (Description bij pijlen)
 - [ ] Uitleg over waarom ik hpa's gebruik
 - [ ] feedback van Onno over research document verwerken part 2 (zie feedpulse)
 - [ ] Video van de autoscaling, met uitleg
