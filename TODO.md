@@ -29,8 +29,9 @@
 - [x] C4 diagrammen
 - [x] feedback van Onno over research document verwerken (zie feedpulse)
 - [x] Architectuur document updaten (Description bij pijlen)
-- [ ] Uitleg over waarom ik hpa's gebruik
+- [x] Uitleg over waarom ik hpa gebruik
+  - [x] Video van de autoscaling, met uitleg
 - [ ] feedback van Onno over research document verwerken part 2 (zie feedpulse)
-- [ ] Video van de autoscaling, met uitleg
 - [ ] Portfolio
-- [ ] (Optioneel) username kunnen veranderen
+  - [x] Contents
+  - [ ] Upload naar portflow 
