@@ -32,6 +32,6 @@
 - [x] Uitleg over waarom ik hpa gebruik
   - [x] Video van de autoscaling, met uitleg
 - [ ] feedback van Onno over research document verwerken part 2 (zie feedpulse)
-- [ ] Portfolio
+- [x] Portfolio
   - [x] Contents
-  - [ ] Upload naar portflow 
+  - [x] Upload naar portflow 
