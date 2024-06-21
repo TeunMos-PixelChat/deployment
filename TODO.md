@@ -15,7 +15,7 @@
 
 #### Sprint 5:
 
-- [x] ~~~~ Resource mapping
+- [x] Resource mapping~
 - [x] GDPR (Document)
   - [x] Documenteer wat er met de data moet gebeuren
   - [x] Users deleten in database
@@ -32,6 +32,9 @@
 - [x] Uitleg over waarom ik hpa gebruik
   - [x] Video van de autoscaling, met uitleg
 - [ ] feedback van Onno over research document verwerken part 2 (zie feedpulse)
+  - [ ] Database research: bij sommige deelvragen eigenlijk meteen een conclusie laat zien en ik beter moet uitleggen hoe ik daar moet komen
+  - [ ] ~~ik kan nog meer kijken naar de testbaarheid van mijn code en dat ik op andere dingen dan mijn API endpoints zou moeten kunnen testen.~~
 - [x] Portfolio
   - [x] Contents
   - [x] Upload naar portflow 
+- [x] Tests fixen
